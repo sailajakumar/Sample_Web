@@ -22,7 +22,7 @@ app = dash.Dash(__name__)
 server=app.server
 
 app.layout = html.Div([
-    html.H2("Online Sales & Profit App"),
+    html.H2("Online Sales & Profit Information Application"),
 
     html.Label("Select Month"),
     dcc.Dropdown(
@@ -32,7 +32,7 @@ app.layout = html.Div([
         clearable=False
     ),
 
-    html.Label("Select Data Type"),
+    html.Label("Select Sales/Profit Type"),
     dcc.Dropdown(
         id="type_dropdown",
         options=[
