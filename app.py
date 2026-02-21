@@ -1,12 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 import dash
 from dash import dcc, html, Input, Output
 import pandas as pd
+import os
 
 # Sample dataset
 data = {
@@ -18,7 +19,6 @@ data = {
 df = pd.DataFrame(data)
 
 app = dash.Dash(__name__)
-server = app.server   # Required for deployment
 
 app.layout = html.Div([
     html.H2("Online Sales & Profit App"),
@@ -54,9 +54,7 @@ def fetch_value(selected_month, selected_type):
     value = df[df["Month"] == selected_month][selected_type].values[0]
     return f"{selected_type} for {selected_month} is: {value}"
 
-
-# In[ ]:
-
-
-
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run_server(host="0.0.0.0", port=port)
 
